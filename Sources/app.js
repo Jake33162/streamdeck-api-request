@@ -182,15 +182,20 @@ function APIRequest(jsonObj) {
         const field  = Utils.getProp(settings, `${prefix}_parse_field`, undefined);
         const value  = Utils.getProp(settings, `${prefix}_parse_value`, undefined);
 
-        if (field  !== undefined && value !== undefined) {
-            json = await resp.json();
-            new_key_state = (Utils.getProperty(json, field) == value);
-        } else if (field !== undefined) {
-            json = await resp.json();
-            new_key_state = !(['false', '0', '', 'undefined'].indexOf(String(Utils.getProperty(json, field)).toLowerCase().trim()) + 1);
-        } else if (value !== undefined) {
-            body = await resp.text();
-            new_key_state = body.includes(value);
+        try {
+            if (field  !== undefined && value !== undefined) {
+                json = await resp.json();
+                new_key_state = (Utils.getProperty(json, field) == value);
+            } else if (field !== undefined) {
+                json = await resp.json();
+                new_key_state = !(['false', '0', '', 'undefined'].indexOf(String(Utils.getProperty(json, field)).toLowerCase().trim()) + 1);
+            } else if (value !== undefined) {
+                body = await resp.text();
+                new_key_state = body.includes(value);
+            }
+        } catch (err) {
+            log('updateImage(): parse error (ignoring):', err);
+            return;
         }
 
         if (new_key_state == key_state) return;
