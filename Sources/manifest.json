@@ -2,7 +2,7 @@
     "Actions": [
         {
             "Icon": "images/api_action",
-            "Name": "API Request",
+            "Name": "TRA API Request",
             "States": [
                 { "Image": "images/api_key" }
             ],
@@ -15,9 +15,9 @@
     "CodePath": "index.html",
     "PropertyInspectorPath": "propertyinspector/index.html",
     "Description": "REST Easily",
-    "Name": "API Request",
+    "Name": "TRA API Request",
     "Icon": "images/api_action",
-    "Category": "API Request",
+    "Category": "TRA API Request",
     "CategoryIcon": "images/api_action",  
     "URL": "https://github.com/mjbnz/sd-api-request/",
     "Version": "0.2",
