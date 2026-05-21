@@ -4,13 +4,13 @@ on:
   push:
     tags:
       - '*'
+  workflow_dispatch:
 
 jobs:
   release-export:
     runs-on: windows-latest
 
     steps:
-      # Check-out repository under $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
 
       - name: Prepare directories and files
@@ -19,16 +19,21 @@ jobs:
           move Sources com.github.mjbnz.sd-api-request.sdPlugin
           move LICENCE com.github.mjbnz.sd-api-request.sdPlugin\LICENCE
 
-      # Build StreamDeck plugin
       - name: StreamDeck Distribution Tool
         uses: AdamCarballo/streamdeck-distribution-tool@v1
         with:
           input: com.github.mjbnz.sd-api-request.sdPlugin
           output: release
 
-      # Create Release
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: com.github.mjbnz.sd-api-request.streamDeckPlugin
+          path: release\com.github.mjbnz.sd-api-request.streamDeckPlugin
+
       - name: Create draft release
         id: create_release
+        if: startsWith(github.ref, 'refs/tags/')
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -39,6 +44,7 @@ jobs:
           prerelease: false
 
       - name: Upload draft release
+        if: startsWith(github.ref, 'refs/tags/')
         uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -49,7 +55,7 @@ jobs:
           asset_content_type: application/zip
 
       - name: Publish draft release
-        if: ${{ startsWith(github.ref_name, 'v') }}
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: eregon/publish-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
