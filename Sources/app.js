@@ -1,4 +1,5 @@
 /* global $SD */
+
 $SD.on('connected', conn => connected(conn));
 
 function connected(jsn) {
