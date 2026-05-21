@@ -5,22 +5,22 @@ $SD.on('connected', conn => connected(conn));
 function connected(jsn) {
     debugLog('Connected Plugin:', jsn);
 
-    $SD.on('com.github.mjbnz.sd-api-request.didReceiveSettings', jsonObj =>
+    $SD.on('com.github.jake33162.sd-api-request.didReceiveSettings', jsonObj =>
         action.onDidReceiveSettings(jsonObj)
     );
-    $SD.on('com.github.mjbnz.sd-api-request.willAppear', jsonObj =>
+    $SD.on('com.github.jake33162.sd-api-request.willAppear', jsonObj =>
         action.onWillAppear(jsonObj)
     );
-    $SD.on('com.github.mjbnz.sd-api-request.willDisappear', jsonObj =>
+    $SD.on('com.github.jake33162.sd-api-request.willDisappear', jsonObj =>
         action.onWillDisappear(jsonObj)
     );
-    $SD.on('com.github.mjbnz.sd-api-request.keyUp', jsonObj =>
+    $SD.on('com.github.jake33162.sd-api-request.keyUp', jsonObj =>
         action.onKeyUp(jsonObj)
     );
 }
 
 var action = {
-    type: 'com.github.mjbnz.sd-api-request',
+    type: 'com.github.jake33162.sd-api-request',
     cache: {},
 
     onDidReceiveSettings: function(jsn) {

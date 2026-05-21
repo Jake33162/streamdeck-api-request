@@ -7,11 +7,11 @@
                 { "Image": "images/api_key" }
             ],
             "Tooltip": "Make an API Request",
-            "UUID": "com.github.mjbnz.sd-api-request"
+            "UUID": "com.github.jake33162.sd-api-request"
         }
     ],
     "SDKVersion": 2,
-    "Author": "mjbnz",
+    "Author": "jake33162",
     "CodePath": "index.html",
     "PropertyInspectorPath": "propertyinspector/index.html",
     "Description": "REST Easily",
@@ -19,7 +19,7 @@
     "Icon": "images/api_action",
     "Category": "TRA API Request",
     "CategoryIcon": "images/api_action",  
-    "URL": "https://github.com/mjbnz/sd-api-request/",
+    "URL": "https://github.com/jake33162/streamdeck-api-request/",
     "Version": "0.2",
     "OS": [
         { "Platform": "mac",     "MinimumVersion": "10.11" },
