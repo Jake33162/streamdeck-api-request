@@ -1,7 +1,7 @@
 {
   "Description": "REST Easily", 
   "Name": "API Request", 
-  "com.github.mjbnz.sd-api-request": {
+  "com.github.jake33162.sd-api-request": {
     "Name": "API Request", 
     "Tooltip": "Make an API Request"
   },
